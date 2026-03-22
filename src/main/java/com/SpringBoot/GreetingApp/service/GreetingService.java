@@ -65,6 +65,18 @@ public class GreetingService {
         return null;
     }
 
+    public String deleteGreeting(Long id) {
+
+        Greeting greeting = repository.findById(id).orElse(null);
+
+        if (greeting != null) {
+            repository.deleteById(id);
+            return "Deleted successfully";
+        }
+
+        return "Greeting not found";
+    }
+
     public String postGreeting() {
         return "Hello World - POST";
     }
