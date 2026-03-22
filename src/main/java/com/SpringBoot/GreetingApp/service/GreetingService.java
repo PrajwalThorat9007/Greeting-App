@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.List;
 
 @Service
 public class GreetingService {
@@ -27,6 +28,12 @@ public class GreetingService {
         } else {
             throw new RuntimeException("Greeting not found");
         }
+    }
+
+
+
+    public List<Greeting> getAllGreetings() {
+        return repository.findAll();
     }
 
     public String getGreeting(String firstName, String lastName) {
