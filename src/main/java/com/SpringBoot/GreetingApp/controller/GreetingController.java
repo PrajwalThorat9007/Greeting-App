@@ -21,6 +21,11 @@ public class GreetingController {
         return service.getGreeting(firstName, lastName);
     }
 
+    @GetMapping("/{id}")
+    public Greeting getGreetingById(@PathVariable Long id) {
+        return service.findGreetingById(id);
+    }
+
 
     // UC4 SAVE
     @PostMapping("/save")
