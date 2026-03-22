@@ -40,4 +40,18 @@ public class GreetingController {
         return service.getAllGreetings();
     }
 
+    @PutMapping("/update/{id}")
+    public Object updateGreeting(
+            @PathVariable Long id,
+            @RequestParam String message) {
+
+        Greeting greeting = service.updateGreeting(id, message);
+
+        if (greeting == null) {
+            return "Greeting not found";
+        }
+
+        return greeting;
+    }
+
 }
