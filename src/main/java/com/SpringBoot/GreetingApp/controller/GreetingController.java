@@ -1,43 +1,37 @@
 package com.SpringBoot.GreetingApp.controller;
 
+import com.SpringBoot.GreetingApp.service.GreetingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/greeting")
 public class GreetingController {
 
+    @Autowired
+    private GreetingService greetingService;
+
     // GET
     @GetMapping
-    public Map<String, String> getGreeting() {
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Hello World - GET");
-        return response;
+    public String getGreeting() {
+        return greetingService.getGreeting();
     }
 
     // POST
     @PostMapping
-    public Map<String, String> postGreeting() {
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Hello World - POST");
-        return response;
+    public String postGreeting() {
+        return greetingService.postGreeting();
     }
 
     // PUT
     @PutMapping
-    public Map<String, String> putGreeting() {
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Hello World - PUT");
-        return response;
+    public String putGreeting() {
+        return greetingService.putGreeting();
     }
 
     // DELETE
     @DeleteMapping
-    public Map<String, String> deleteGreeting() {
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Hello World - DELETE");
-        return response;
+    public String deleteGreeting() {
+        return greetingService.deleteGreeting();
     }
 }
