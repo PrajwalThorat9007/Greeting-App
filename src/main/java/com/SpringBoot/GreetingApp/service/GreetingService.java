@@ -1,9 +1,21 @@
 package com.SpringBoot.GreetingApp.service;
 
+import com.SpringBoot.GreetingApp.model.Greeting;
+import com.SpringBoot.GreetingApp.repository.GreetingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class GreetingService {
+
+    @Autowired
+    private GreetingRepository repository;
+
+    public Greeting saveGreeting(String message) {
+        Greeting greeting = new Greeting(message);
+        return repository.save(greeting);
+    }
 
     public String getGreeting(String firstName, String lastName) {
 
